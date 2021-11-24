@@ -126,9 +126,10 @@ public class BlockListeners implements Listener {
 
             event.setCancelled(true);
             ItemStack item = plugin.newHopperItem(level);
-            ItemMeta meta = item.getItemMeta();
             assert meta != null;
+            ItemMeta meta = item.getItemMeta();
             meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', String.valueOf(Settings.HOPPER_NAME)));
+            item.setItemMeta(meta);
             event.getBlock().setType(Material.AIR);
             event.getBlock().getLocation().getWorld().dropItemNaturally(event.getBlock().getLocation(), item);
         }
