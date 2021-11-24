@@ -13,6 +13,9 @@ public class Settings {
 
     private static final Config config = EpicHoppers.getInstance().getCoreConfig();
 
+    public static final ConfigSetting HOPPER_NAME = new ConfigSetting(config, "Main.Name of Hopper", "Hopper",
+            "What should the item name for the hopper be? (Supports color codes)");
+
     public static final ConfigSetting HOPPER_UPGRADING = new ConfigSetting(config, "Main.Allow hopper Upgrading", true,
             "Should hoppers be upgradable?");
 

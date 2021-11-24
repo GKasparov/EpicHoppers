@@ -8,6 +8,7 @@ import com.songoda.epichoppers.hopper.HopperBuilder;
 import com.songoda.epichoppers.hopper.levels.Level;
 import com.songoda.epichoppers.settings.Settings;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -18,6 +19,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 
 /**
@@ -124,7 +126,9 @@ public class BlockListeners implements Listener {
 
             event.setCancelled(true);
             ItemStack item = plugin.newHopperItem(level);
-
+            ItemMeta meta = item.getItemMeta();
+            assert meta != null;
+            meta.setDisplayName(ChatColor.translateAlternateColorCodes('8', String.valueOf(Settings.HOPPER_NAME)));
             event.getBlock().setType(Material.AIR);
             event.getBlock().getLocation().getWorld().dropItemNaturally(event.getBlock().getLocation(), item);
         }
